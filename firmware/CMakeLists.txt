@@ -8,7 +8,7 @@ include_directories(${ROS_LIB_DIR})
 #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libraries)
 
 generate_arduino_firmware(ros_arduino
-  SRCS ros_arduino.cpp ${ROS_LIB_DIR}/time.cpp
+  SRCS enc_get.cpp ${ROS_LIB_DIR}/time.cpp
   BOARD mega2560
   PORT /dev/ttyACM0
 )

@@ -22,7 +22,6 @@ std_msgs::Bool bool_msg;
 
 ros::Publisher debug_1("DEBUG_1", &uint_msg);
 ros::Publisher debug_2("DEBUG_2", &bool_msg);
-
 int pin1A = 0;
 int pin1AOld = 0;
 int pin1B = 0;
@@ -75,6 +74,8 @@ void setup()
   nh.advertise(debug_1);
   nh.advertise(debug_2);
   bool_msg.data=0;
+  uint_msg.data=0.0;
+  debug_1.publish(&uint_msg);
 
   pinMode(motorIn1,OUTPUT);   pinMode(motorIn2,OUTPUT);   
   pinMode(Encoder1A, INPUT);  pinMode(Encoder1B, INPUT);  
@@ -92,10 +93,9 @@ void loop()
      
      if((millis()-lastMilli) >= LOOPTIME)   
      {                                    // enter tmed loop
-        dT = millis()-lastMilli;
         lastMilli = millis();
 
-	analogWrite(motorIn1,abs(50));  
+	analogWrite(motorIn1,abs(5));  
 	analogWrite(motorIn2,0);
        
         uint_msg.data=Encoder1pos;
